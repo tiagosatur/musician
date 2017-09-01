@@ -1,0 +1,1558 @@
+@import "_normalize.scss"
+
+// @FONT-FACES
+@font-face
+  font-family: 'DosisRegular'
+  src: url('../assets/fonts/Dosis/Dosis-Regular.ttf') format('truetype')
+  font-weight: normal
+  font-style:  normal
+
+@font-face
+  font-family: 'OpenSansRegular'
+  src: url('../assets/fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype')
+  font-weight: normal
+  font-style:  normal
+
+
+
+//Mobile First Approach
+
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  list-style: none
+  outline: 0
+
+  // trick for debuging
+  // background: #000 !important
+  // color: #0f0 !important
+  // outline: solid #f00 1px !important
+
+
+
+body
+  color: black
+  font-family: 'OpenSansRegular'
+
+a
+  color: inherit //força os links a ter a cor de seus pais
+  text-decoration: none
+
+
+h1, h2, h3, h4, h5, h6
+  font-weight: normal
+
+//Style variables
+$marginLeft-mobile: 40px
+$marginRight-mobile: $marginLeft-mobile
+// $iPad: "screen and (min-width: 1537px)"
+// $desktop: "screen and (min-width: 2000px)"
+$iPad: "screen and (min-width: 768px)"
+$desktop: "screen and (min-width: 1300px)"
+
+$marginLeft-iPad: 80px
+$marginRight-iPad: $marginLeft-iPad
+
+
+// START PLACEHOLDERS
+
+%section__title
+  font-family: 'DosisRegular'
+  text-transform: uppercase
+  font-size: 50px
+  line-height: 59px
+  letter-spacing: 0.118px
+  // text-align: center
+  margin-bottom: 50px
+  position: relative
+  display: inline-block
+  z-index: 10
+
+  @media #{$iPad}
+    font-size: 74px
+    margin-bottom: 74px
+
+  @media #{$desktop}
+    font-size: 50px
+    line-height: 59px
+    margin-bottom: 55px
+
+  &::after
+    height: 1px
+    width: calc(100% + 30px)
+    content: ""
+    position: absolute
+    // border-top: 1px solid black
+    // margin: -27px 5%
+    left: -15px
+    top: 30px
+    background-color: black
+
+    z-index: -1
+
+    @media #{$iPad}
+      // width: 80%
+      // margin: -40px 10%
+
+%section__title-container
+  text-align: center
+
+%section__headline
+  font-size: 15px
+  color: #7a8083
+  text-align: center
+  margin: 0 40px
+  line-height: 24.27px
+  letter-spacing: 0.118px
+
+  @media #{$iPad}
+    font-size: 21px
+    margin-left: 123px
+    margin-right: 123px
+    //margin-bottom: Cada headline tem sua m bottom
+    line-height: 35.78px
+
+  @media #{$desktop}
+    width: 850px
+    font-size: 14px
+    line-height: 24.27px
+    margin: auto
+
+
+%block__year-or-date
+  font-size: 15px
+  font-weight: bold
+  color: #808080
+  position: relative
+  line-height: 24px
+  //margin: 0 40px 10px //o after não pega margin-bottom
+  margin-left: $marginLeft-mobile
+  margin-right: $marginRight-mobile
+  margin-bottom: 10px
+
+  @media #{$iPad}
+    font-size: 21px
+    line-height: 36px
+    margin-left: $marginLeft-iPad
+    margin-right: $marginRight-iPad
+
+  @media #{$desktop}
+    font-size: 14px
+    line-height: 24px
+
+  &::after
+    content: ""
+    width: calc(100% - 10px) //margin 40 + 40, não entendi
+    border-bottom: 1px solid black
+    position: absolute
+    display: block
+    //display block ou top: 0 e bottom: 0 para posicionar a linha abaixo do ano
+
+
+%block__name-or-author
+  font-size: 15px
+  font-weight: bold
+  text-transform: uppercase
+  line-height: 24px
+  margin-left: $marginLeft-mobile
+  margin-right: $marginLeft-mobile
+
+  @media #{$iPad}
+    font-size: 21px
+    line-height: 36px
+    margin-left: $marginLeft-iPad
+    margin-right: $marginRight-iPad
+
+  @media #{$desktop}
+    font-size: 14px
+    line-height: 24px
+
+
+%block__title
+  font-size: 24px
+  margin-left: $marginLeft-mobile
+  margin-right: $marginRight-mobile
+  letter-spacing: 0.18px
+  line-height: 24px
+
+  @media #{$iPad}
+    font-size: 34px
+    line-height: 36px
+    margin-left: $marginLeft-iPad
+    margin-right: $marginRight-iPad
+
+  @media #{$desktop}
+    font-size: 23px
+    line-height: 24px
+
+%block__store-or-buy-button
+  display: inline-block
+  font-size: 15px
+  font-weight: bold
+  width: 196px
+  height: 56px
+  line-height: 56px
+  text-align: center
+  border: 1px solid #b4b5b5
+
+  @media #{$iPad}
+    width: 294px
+    height: 85px
+    font-size: 21px
+    line-height: 85px
+
+  @media #{$desktop}
+    width: 196px
+    height: 56px
+    font-size: 14px
+    line-height: 56px
+
+  &:hover
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+
+%block__text
+  font-size: 15px
+  line-height: 24px
+  letter-spacing: 0.18px
+  color: #7a8083
+  text-align: justify
+  margin-left: $marginLeft-mobile
+  margin-right: $marginRight-mobile
+
+  @media #{$iPad}
+    font-size: 21px
+    line-height: 36px
+    margin-left: $marginLeft-iPad
+    margin-right: $marginRight-iPad
+
+  @media #{$desktop}
+    font-size: 14px
+    line-height: 24px
+
+
+//END PLACEHOLDERS
+
+
+.main-header
+  height: 1064px
+  // height: 1216px
+  background-image: url('/assets/images/main-header__bg--mobile.png')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: top center
+  position: relative
+
+  //Removing the extra bottom space on screen resizing
+  @media screen and (min-width: 608px)
+    background-size: contain
+
+  @media #{$iPad}
+    background-image: url('/assets/images/main-header__bg--desktop.png')
+    background-size: cover
+
+
+
+  @media #{$desktop}
+    background-image: url('/assets/images/main-header__bg--desktop.png')
+
+
+  &__linkdown a
+    display: block
+    width: 100%
+    height: 100px
+    line-height: 100px
+    position: absolute
+    top: 63%
+
+
+.main-nav
+
+  @media #{$desktop}
+    background-color: rgba(#e5e6e6, 0.9)
+    width: 100%
+    height: 62px
+
+  &__menu
+    position: absolute
+    top: 80px
+    right: 40px
+
+    @media #{$iPad}
+      top: 100px
+
+    @media #{$desktop}
+      top: 0
+
+  &__icon
+    display: inline-block
+    float: right
+    width: 42px
+    height: 28px
+    line-height: 58px
+    background-image: url('/assets/images/main-nav__icon.png')
+    background-repeat: no-repeat
+    background-size: contain
+    position: absolute
+    top: 40px
+    right: 40px
+
+    @media #{$iPad}
+      width: 72px
+      height: 48px
+
+    @media #{$desktop}
+      display: none
+
+.menu
+  display: none
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+
+  @media #{$desktop}
+    width: 100%
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    box-shadow: none
+    margin: 0 auto
+
+  &__item a
+    display: block
+    background-color: white
+    line-height: 50px
+    padding-left: 20px
+    color: #737272
+    width: 250px
+
+    @media #{$iPad}
+      font-size: 18px
+
+    @media #{$desktop}
+      padding: 0
+      width: auto
+      background-color: transparent
+      font-size: 17px
+      line-height: 40px
+      text-transform: uppercase
+      letter-spacing: 0.18px
+      font-family: 'DosisRegular'
+      margin-right: 45px
+      padding-top: 10px //because line heigth supposed to be 60px
+
+    &:hover
+      color: black
+
+      @media #{$desktop}
+        border-bottom: 2px solid black
+
+
+
+.discography
+  position: relative
+  background-image: url('/assets/images/discography__bg.png')
+  background-repeat: no-repeat
+  background-size: contain
+  background-position: center bottom
+  padding-bottom: 450px
+
+  @media #{$iPad}
+    background-image: url('/assets/images/discography__bg--iPad.png')
+
+  @media #{$desktop}
+    background-image: url('/assets/images/discography__bg--desktop.png')
+
+  &__title
+    @extend %section__title
+    // color: #976b4f
+    //Gradient for Chrome
+    background: -webkit-linear-gradient(left, #8a684e, #6b5155)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+    &-container
+      @extend %section__title-container
+
+    @media #{$desktop}
+      margin-top: 50px
+
+  &__headline
+    @extend %section__headline
+    margin-bottom: 115px
+
+    @media #{$iPad}
+      margin-bottom: 174px
+
+    @media #{$desktop}
+      margin-bottom: 160px
+
+.album
+  // margin: 0 auto
+
+  @media #{$desktop}
+    // margin: 0 auto
+    display: grid
+    grid-template-columns: 505px 672px
+    // grid-template-columns: 1fr 1fr //didnt have how to align header and body with justify-self property, so use a fixed width column
+    grid-column-gap: 26px
+    justify-content: center
+
+  &__header
+
+    @media #{$desktop}
+      grid-row-start: 1 / 2
+
+  &__body
+
+    @media #{$desktop}
+      grid-row-start: 1 / 2
+
+  &__year
+    @extend %block__year-or-date
+
+    @media #{$desktop}
+      margin-top: 70px
+      margin-left: 0
+      margin-right: 0
+      // float: left
+
+    &::after
+      @extend %block__year-or-date::after
+
+      @media #{$desktop}
+        width: 505px
+
+  &__name
+    @extend %block__name-or-author
+    margin-bottom: 45px
+
+    @media #{$iPad}
+      margin-bottom: 65px
+
+    @media #{$desktop}
+      margin-left: 0
+      margin-right: 0
+
+  &__title
+    @extend %block__title
+    margin-bottom: 30px
+
+    @media #{$iPad}
+      margin-bottom: 35px
+
+    @media #{$desktop}
+      margin-left: 0
+      margin-right: 0
+
+  &__description
+    @extend %block__text
+    color: #aaaaaa
+    margin-bottom: 45px
+
+    @media #{$iPad}
+      margin-bottom: 55px
+
+    @media #{$desktop}
+      margin-left: 0
+      margin-right: 0
+
+  &__button
+    background-repeat: no-repeat
+    text-transform: uppercase
+    font-weight: bold
+    text-align: center
+    font-size: 15px
+    color: black
+    width: 196px
+    height: 56px
+    line-height: 56px
+    display: block
+    margin: 0 auto 110px
+
+    @media #{$iPad}
+      font-size: 21px
+      width: 294px
+      height: 84px
+      line-height: 84px
+      margin-bottom: 150px
+
+    @media #{$desktop}
+      margin-left: 0
+      margin-right: 0
+      width: 196px
+      height: 56px
+      line-height: 56px
+      font-size: 14px
+
+    &:hover
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+
+    &--first
+      color: white
+      background-image: url('/assets/images/album__button-bg--first.png')
+
+      @media #{$desktop}
+        background-image: url('/assets/images/album__button-bg--first--desktop.png')
+
+    &--second
+      background-image: url('/assets/images/album__button-bg--second.png')
+
+      @media #{$desktop}
+        background-image: url('/assets/images/album__button-bg--second--desktop.png')
+
+    &--third
+      background-image: url('/assets/images/album__button-bg--third.png')
+      margin-bottom: 0
+
+      @media #{$desktop}
+        background-image: url('/assets/images/album__button-bg--third--desktop.png')
+
+
+.concert-tours
+  padding-top: 110px
+  padding-bottom: 50px
+  background-image: url('/assets/images/concert-tours__bg.png')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center 300px
+
+  @media #{$iPad}
+    background-image: url('/assets/images/concert-tours__bg--iPad.png')
+    background-position: 40% 300px
+
+  @media #{$desktop}
+    background-image: url('/assets/images/concert-tours__bg--desktop.png')
+    background-size: cover
+    padding-bottom: 245px
+
+  &__title
+    @extend %section__title
+    font-size: 50px
+    background: -webkit-linear-gradient(#779da6, #98b5ae)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+    &-container
+      @extend %section__title-container
+
+  &__headline
+    @extend %section__headline
+    margin-bottom: 150px
+
+    @media #{$desktop}
+      margin-bottom: 472px
+
+
+  &__post-date
+    @extend %block__year-or-date
+    color: black
+    // margin-left: 40px
+
+    @media #{$desktop}
+      width: 395px
+      margin-left: 20%
+
+    &::after
+      @extend %block__year-or-date::after
+      width: calc(100% - 150px)
+
+      @media #{$desktop}
+        width: 395px
+  &__name
+    @extend %block__name-or-author
+    margin-bottom: 82px
+
+    @media #{$desktop}
+      margin-bottom: 85px
+      margin-left: 20%
+
+  &__period
+    @extend %block__title
+    margin-bottom: 30px
+
+    @media #{$desktop}
+      margin-left: 20%
+
+  &__text
+    @extend %block__text
+    text-align: left
+    // margin: 0 40% 106px $marginLeft-mobile
+    margin-right: 25%
+    margin-bottom: 106px
+
+    @media #{$desktop}
+      width: 675px
+      margin-bottom: 40px
+      margin-left: 20%
+
+  &__buy-button
+    @extend %block__store-or-buy-button
+    margin-left: $marginLeft-mobile
+
+    @media #{$iPad}
+      margin-left: $marginLeft-iPad
+
+    @media #{$desktop}
+      margin-left: 20%
+
+a i
+  // font-size: 38em
+  margin-left: 10px
+  line-height: 56px
+
+
+.latter-compositions
+  padding-top: 118px
+
+  @media #{$iPad}
+    padding-top: 160px
+    padding-bottom: 80px
+
+  &__title
+    @extend %section__title
+    font-size: 35px
+
+    //This specific title is breaking the layout on mobile,
+    //so I had to decrease normal mobile height and create specific media queries
+    @media #{$iPad}
+      font-size: 74px
+      margin-bottom: 74px
+
+    @media #{$desktop}
+      font-size: 50px
+      line-height: 59px
+      margin-bottom: 55px
+
+
+    &-container
+      @extend %section__title-container
+
+  &__headline
+    @extend %section__headline
+    margin-bottom: 65px
+
+    @media #{$iPad}
+      margin-bottom: 150px
+
+    @media #{$desktop}
+      margin-bottom: 166px
+
+
+
+  &__list
+    margin: 0 auto
+
+.compositions
+
+  @media #{$desktop}
+    display: grid
+    justify-content: center
+    
+
+
+.composition
+  background-color: #f5f6f6
+  overflow: auto //Avoids that the margin-top preferencies of &__publication-date and .composition collapse with each other
+  padding-top: 35px //Cant just use padding for all sides, because de video player
+  margin-bottom: 50px
+  margin-left: 30px
+  margin-right: 30px
+
+  //Ipad normal
+  // @media (min-width: 768px)
+  //   margin-left: 20%
+  //   margin-right: 20%
+
+  @media #{$iPad}
+    padding-top: 50px
+    margin-left: $marginLeft-iPad
+    margin-right: $marginRight-iPad
+    margin-bottom: 55px
+    // width: 923px
+
+  @media #{$desktop}
+    width: 1200px
+    display: grid
+    grid-template-columns: 600px 600px
+    // grid-column-gap: 26px
+    justify-content: center
+
+    padding: 0
+    margin-right: 0
+    margin-left: 0
+
+
+    &:nth-of-type(2) .composition__desktop-left
+      grid-column: 2
+      grid-row: 1
+
+    &:nth-of-type(2) .composition__player
+      grid-column: 1
+      grid-row: 1
+
+    &:nth-of-type(1) .composition__player::after, &:nth-of-type(3) .composition__player::after
+      left: -1px
+      top: calc(50% - 5px)
+      border-color: transparent transparent transparent #f5f6f6
+
+    &:nth-of-type(2) .composition__player::after
+      right: -1px
+      top: calc(50% - 5px)
+      border-color: transparent #f5f6f6 transparent transparent
+
+
+  &__publication-date
+    @extend %block__year-or-date
+
+    @media #{$iPad}
+      //The placeholders have margins left and right because in most of the cases they area necessary. But in the compositioin case, I'll have to reset these margins
+      margin-left: 50px
+      margin-right: 50px
+
+    @media #{$desktop}
+      width: 395px
+      margin-right: 0
+      margin-top: 35px
+
+    &::after
+      @extend %block__year-or-date::after
+
+  &__author
+    @extend %block__name-or-author
+    margin-bottom: 50px
+    margin-left: $marginLeft-mobile
+
+    @media #{$iPad}
+      margin-left: 50px
+      margin-right: 50px
+      margin-bottom: 75px
+
+    @media #{$desktop}
+      width: 395px
+      margin-bottom: 48px
+
+  &__title
+    @extend %block__title
+    margin-bottom: 40px
+    margin-left: 35px
+
+    @media #{$iPad}
+      margin-left: 50px
+      margin-right: 50px
+
+    @media #{$desktop}
+      width: 490px
+
+  &__text
+    @extend %block__text
+    margin-bottom: 62px
+    margin-left: 35px
+    margin-right: 35px
+
+    @media #{$iPad}
+      margin-left: 50px
+      margin-right: 50px
+      margin-bottom: 115px
+
+    @media #{$desktop}
+      width: 508px
+      margin-bottom: 45px
+
+  &__store-button
+    @extend %block__store-or-buy-button
+    display: block
+    margin-left: auto
+    margin-right: auto
+    margin-bottom: 30px
+
+    @media #{$iPad}
+      display: block
+      // float: left
+      // clear: both
+
+    @media #{$desktop}
+      display: inline-block
+      float: left
+      margin-left: 50px
+      margin-right: 20px
+      margin-bottom: 0
+
+
+  &__player
+    position: relative
+
+    & iframe
+      width: 100%
+      height: 400px
+
+      @media #{$iPad}
+        // ipad(1537) height: 450px
+        clear: both //There are floats on button and socialmedia, so the player::after goes up
+
+      @media #{$desktop}
+        width: 600px
+        height: 455px
+
+    &::after
+      content: " "
+      display: block
+      position: absolute
+      top: -1px
+      left: calc(50% - 5px)
+      border-color: #f5f6f6 transparent transparent transparent
+      border-style: solid
+      border-width: 10px
+
+      @media #{$iPad}
+
+      //after for desktop version is above
+
+
+
+.socialmedias-counter
+  margin: 0 auto 40px auto
+  text-align: center
+
+  @media #{$iPad}
+    height: 85px
+    line-height: 85px
+    // float: left
+    margin-right: 50px
+    margin-left: 50px
+    margin-bottom: 55px
+    // clear: both
+
+    @media #{$desktop}
+      margin-left: 0
+      margin-right: 0
+      margin-bottom: 0
+      line-height: 56px
+
+  &__item
+    display: inline
+
+    & a
+      color: #979898
+      font-size: 12px
+      display: inline-block
+      padding-left: 24px
+      background-repeat: no-repeat
+      height: 19px
+      line-height: 19px
+
+      @media #{$iPad}
+        font-size: 18px
+
+    &--plays a
+      background-image: url('/assets/images/socialmedias-counter__item--plays.png')
+      background-position: left center
+
+    &--likes a
+      background-image: url('/assets/images/socialmedias-counter__item--likes.png')
+      margin-left: 15px
+      background-position: left center
+
+    &--shares a
+      background-image: url('/assets/images/socialmedias-counter__item--shares.png')
+      background-position: left center
+      margin-left: 15px
+
+    &--comments a
+      background-image: url('/assets/images/socialmedias-counter__item--comments.png')
+      background-position: left center
+      margin-left: 15px
+
+
+.curiosities
+  background-image: url('/assets/images/curiositiies__bg.png')
+  background-repeat: no-repeat
+  background-size: cover
+  padding: 30% 0 85px 0
+
+  @media #{$iPad}
+    padding-bottom: 130px
+
+  @media #{$desktop}
+    background-image: url('/assets/images/curiositiies__bg--desktop.png')
+    padding-top: 160px
+
+  &__title
+    background-image: url('/assets/images/curiosities__title-note.png')
+    background-repeat: no-repeat
+    background-position: center
+    width: 133px
+    height: 35px
+    display: block
+    text-align: center
+    margin: 0 auto 30px auto
+
+    @media #{$iPad}
+      margin-bottom: 70px
+
+  &__headline
+    font-family: 'DosisRegular'
+    color: white
+    text-transform: uppercase
+    font-size: 17px
+    line-height: 26.27px
+    text-align: center
+    margin-left: $marginLeft-mobile
+    margin-right: $marginRight-mobile
+    margin-bottom: 40px
+
+    @media #{$iPad}
+      font-size: 27px
+      line-height: 39px
+      margin-left: $marginLeft-iPad
+      margin-right: $marginRight-iPad
+      margin-bottom: 70px
+
+    @media #{$desktop}
+      font-size: 18.5px
+      line-height: 26.27px
+      letter-spacing: 0.118px
+      width: 950px
+      text-align: center
+      margin-left: auto
+      margin-right: auto
+      margin-bottom: 45px
+
+  &__text
+    @extend %block__text
+    margin-bottom: 70px
+    text-align: center
+
+    @media #{$iPad}
+      margin-left: 200px
+      margin-right: 200px
+      margin-bottom: 100px
+
+    @media #{$desktop}
+      width: 515px
+      text-align: center
+      margin-left: auto
+      margin-right: auto
+      margin-bottom: 70px
+
+
+  &__date
+    font-size: 14px
+    line-height: 24px
+    letter-spacing: 0.18px
+    color: #565e61
+    margin: 0 $marginLeft-mobile 40px
+    text-align: center
+
+    @media #{$iPad}
+      font-size: 21px
+      line-height: 36px
+      margin-bottom: 120px
+
+    @media #{$desktop}
+      font-size: 14px
+      line-height: 26.27px
+      margin-bottom: 80px
+
+
+.owl-theme .owl-dots .owl-dot
+  @media #{$iPad}
+    &:nth-of-type(1), &:nth-of-type(2)
+      margin-right: 50px
+
+  @media #{$desktop}
+    &:nth-of-type(1), &:nth-of-type(2)
+      margin-right: 40px
+
+  & span
+    background-color: white !important
+
+    @media #{$iPad}
+      width: 15px !important
+      height: 15px !important
+
+    @media #{$desktop}
+      width: 12px !important
+      height: 12px !important
+
+  &.active span
+    background-color: transparent !important
+    border: 1px solid white !important
+
+.new-tracks
+  background-color: white
+  padding-top: 55px
+
+  @media #{$iPad}
+    padding-top: 150px
+
+  @media #{$desktop}
+    padding-top: 165px
+    padding-left: 0
+    padding-right: 0
+
+  &__list
+
+    @media #{$iPad}
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      justify-content: center
+      flex-grow: 1
+
+.track
+  height: 422px
+  background-repeat: no-repeat
+  background-position: bottom right
+  max-width: 384px
+  margin-left: auto
+  margin-right: auto
+  margin-bottom: 55px
+  padding: 35px 35px 60px 35px
+
+
+  @media #{$iPad}
+    width: 584px
+    height: 642px
+    padding: 50px
+    // margin: 0
+    margin-bottom: 80px
+    max-width: none
+
+    // &:nth-of-type(odd)
+    //   margin-right: 35px
+
+  @media #{$desktop}
+    //Same as mobile
+    background-size: cover
+    margin: 0
+    padding: 15px 35px 60px 35px
+    height: 422px
+    background-repeat: no-repeat
+    background-position: bottom right
+    // width: 364px
+    flex-basis: 30%
+
+    @media (min-width: 1800px)
+      flex-basis: 30%
+
+    &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(4), &:nth-of-type(5)
+      margin-right: 23px
+      margin-bottom: 23px
+
+  &:nth-child(1)
+    background-image: url('/assets/images/track__01-bg.png')
+
+    @media #{$iPad}
+      background-image: url('/assets/images/track__01-bg--iPad.png')
+
+    @media #{$desktop}
+    //Same as mobile
+    background-image: url('/assets/images/track__01-bg.png')
+
+  &:nth-child(2)
+    background-image: url('/assets/images/track__02-bg.png')
+
+    @media #{$iPad}
+      background-image: url('/assets/images/track__02-bg--iPad.png')
+
+    @media #{$desktop}
+      background-image: url('/assets/images/track__02-bg.png')
+
+  &:nth-child(3)
+    background-image: url('/assets/images/track__03-bg.png')
+
+    @media #{$iPad}
+      background-image: url('/assets/images/track__03-bg--iPad.png')
+
+    @media #{$desktop}
+      background-image: url('/assets/images/track__03-bg.png')
+
+  &:nth-child(4)
+    background-image: url('/assets/images/track__04-bg.png')
+
+    @media #{$iPad}
+      background-image: url('/assets/images/track__04-bg--iPad.png')
+
+
+    @media #{$desktop}
+      background-image: url('/assets/images/track__04-bg.png')
+
+  &:nth-child(5)
+    background-image: url('/assets/images/track__05-bg.png')
+
+    @media #{$iPad}
+      background-image: url('/assets/images/track__05-bg--iPad.png')
+
+    @media #{$desktop}
+      background-image: url('/assets/images/track__05-bg.png')
+
+  &:nth-child(6)
+    background-image: url('/assets/images/track__06-bg.png')
+
+    @media #{$iPad}
+      background-image: url('/assets/images/track__06-bg--iPad.png')
+
+    @media #{$desktop}
+      background-image: url('/assets/images/track__06-bg.png')
+
+  &__pubclication-date
+    @extend %block__year-or-date
+    color: #6f6967
+    margin: 0 auto
+
+    &::after
+      @extend %block__year-or-date::after
+
+  &__band
+    @extend %block__name-or-author
+    color: white
+    margin-bottom: 45px
+    margin-left: 0
+    margin-bottom: 44px
+
+    @media #{$iPad}
+      margin-bottom: 70px
+
+    @media #{$desktop}
+      margin-bottom: 50px
+
+  &__name
+    font-size: 23px
+    line-height: 24px
+    margin-bottom: 40px
+    hyphens: auto
+    margin: 0 auto 40px
+
+    @media #{$iPad}
+      font-size: 34px
+      letter-spacing: 0.18px
+      line-height: 36px
+      margin-bottom: 55px
+
+    @media #{$desktop}
+      font-size: 23px
+      line-height: 24px
+      margin-bottom: 35px
+
+
+  &__description
+    @extend %block__text
+    margin: 0 auto
+
+
+
+.main-events
+  background-image: url('/assets/images/main-events__bg.png')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: left 20px
+  padding-top: 80px //135-55 = 80
+  padding-bottom: 300px
+
+  @media #{$iPad}
+    padding-top: 300px
+    padding-left: 15%
+    background-image: url('/assets/images/main-events__bg--iPad.png')
+    background-position: -400px 300px
+    //calc(636 - 80px)
+
+  @media #{$desktop}
+    background-image: url('/assets/images/main-events__bg--desktop.png')
+    background-position: -250px 160px
+    padding-top: 335px
+    padding-left: 40%
+
+  @media(min-width: 2000px)
+    background-position: -150px 160px
+
+
+  &__title
+    @extend %section__title
+    color: #42717e
+    margin-left: $marginLeft-mobile
+    margin-right: $marginRight-mobile
+    margin-bottom: 118px
+    z-index: 1
+
+    @media #{$iPad}
+      margin-left: 0
+
+
+    @media #{$desktop}
+      margin-left: 100px
+
+    &-container
+      @extend %section__title-container
+
+      @media #{$desktop}
+        text-align: left
+
+    &::after
+      @extend %section__title::after
+
+
+.event
+  // margin-left: 15%
+
+  @media #{$iPad}
+    margin-left: 15%
+
+  @media #{$desktop}
+    margin-right: 20%
+
+
+
+  &__title
+    @extend %block__title
+    line-height: 45px
+    margin-bottom: 20px
+
+    @media #{$iPad}
+      margin-bottom: 25px
+      margin-left: 0
+      margin-right: $marginRight-iPad
+
+    &::after
+      @extend %block__year-or-date::after
+      width: 132px
+
+  &__description
+    @extend %block__text
+    margin-bottom: 22px
+
+    @media #{$iPad}
+      margin-left: 0
+      margin-right: $marginRight-iPad
+
+    @media #{$desktop}
+      width: 560px
+
+
+  %date-vertical-line
+    width: 1px
+    background-color: black
+    height: 132px
+    content: ""
+    display: block
+    z-index: -1
+    margin-left: 35px
+    margin-bottom: 12px
+
+  &__date
+    font-size: 15px
+    color: #7a8083
+    font-weight: bold
+    margin-left: $marginLeft-mobile
+    margin-right: $marginRight-mobile
+
+    @media #{$iPad}
+      font-size: 21px
+      line-height: 34px
+      margin-left: 0
+      margin-right: $marginRight-iPad
+
+    &::before
+      @extend %date-vertical-line
+
+    &::after
+      @extend %date-vertical-line
+      margin-top: 25px
+      margin-bottom: 22px
+
+      @media #{$iPad}
+        margin-bottom: 35px
+
+  &:first-of-type .event__date::before
+    height: 36px
+
+  &:last-child .event__date::after
+    display: none
+
+
+.history
+  height: 1115px
+  background-image: url('/assets/images/history__bg.png')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: 52% 50px
+  padding-top: 90px
+
+  @media #{$iPad}
+    padding-top: 175px
+    height: 1745px
+    background-image: url('/assets/images/history__bg--iPad.png')
+    background-position: center 120px
+
+  @media #{$desktop}
+    padding-top: 160px
+    background-image: url('/assets/images/history__bg--desktop.png')
+    background-size: contain
+    background-position: center 400px
+    height: 1246px
+
+  @media (min-width: 2000px)
+    background-position: center 180px
+
+  &__title
+    @extend %section__title
+
+    &-container
+      @extend %section__title-container
+
+  &__headline
+    @extend %section__headline
+    margin-bottom: 115px
+
+    @media #{$iPad}
+      margin-bottom: 250px
+
+    @media #{$desktop}
+      margin-bottom: 150px
+
+
+.fact
+  color: #5a5a58
+  display: inline
+  text-align: center
+
+  &__date
+    font-family: 'DosisRegular'
+    font-size: 35px
+    letter-spacing: 59px
+    letter-spacing: 0.18px
+    margin-bottom: 40px
+    position: relative
+
+    @media #{$iPad}
+      font-size: 53px
+      line-height: 88px
+      margin-bottom: 60px
+
+    @media #{$desktop}
+      font-size: 35px
+      letter-spacing: 59px
+      letter-spacing: 0.18px
+      margin-bottom: 40px
+
+    &::before
+      width: 8px
+      height: 8px
+      content: ""
+      display: block
+      position: absolute
+      background-color: #5a5c5b
+      border-radius: 4px
+      top: 50%
+      left: 30%
+
+      @media #{$iPad}
+        left: 38%
+
+      @media #{$desktop}
+        left: 45%
+
+    &::after
+      @extend .fact__date::before
+      left: 70%
+
+      @media #{$iPad}
+        left: 62%
+
+      @media #{$desktop}
+        left: 55%
+    //The horizontal lines maybe can be used later
+    // &--lines
+    //   position: relative
+    //
+    //   &::before
+    //     width: 100%
+    //     border-bottom: 1px solid #afafb0
+    //     content: ""
+    //     display: block
+    //     position: absolute
+    //     top: 60%
+    //     margin-left: 10px
+    //
+    //   &::after
+    //     @extend .fact__date--lines::before
+    //     margin-right: 10px
+    //     left: 160%
+
+  &__description
+    font-size: 14px
+    line-height: 19.27px
+    width: 215px
+    margin: 0 auto
+
+    @media #{$iPad}
+      font-size: 21px
+      line-height: 28px
+      width: 340px
+
+    @media #{$desktop}
+      font-size: 14px
+      line-height: 19.27px
+      width: 212px
+
+
+.contact
+  margin: 0 auto
+  padding-top: 90px
+  padding-bottom: 458px
+  padding-left: 20%
+  background-image: url('/assets/images/contact__bg.png')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center 150px
+
+  @media #{$iPad}
+    height: 1545px
+    background-image: url('/assets/images/contact__bg--iPad.png')
+    padding-left: 33.3%
+    padding-top: 200px
+
+  @media #{$desktop}
+    background-image: url('/assets/images/contact__bg--desktop.png')
+    background-position: center bottom
+    padding-top: 268px
+    padding-left: 40%
+    padding-right: 20%
+
+  @media (min-width: 2000px)
+      padding-left: 50%
+  &__title
+    @extend %section__title
+    text-align: left
+    margin-left: $marginLeft-mobile
+
+    @media #{$desktop}
+      margin-left: 40px
+
+    &-container
+      //not center aligned
+
+.address
+  margin-left: $marginLeft-mobile
+  margin-right: $marginRight-mobile
+
+  &__street
+    font-size: 15px
+    color: #7a8083
+    line-height: 30px
+    letter-spacing: 0.18px
+
+  @media #{$iPad}
+    font-size: 21px
+    line-height: 36px
+    margin-bottom: 25px
+
+  @media #{$desktop}
+    font-size: 14px
+
+  &__phone
+    @extend .address__street
+    margin-bottom: 90px
+
+    @media #{$iPad}
+      font-size: 21px
+      margin-bottom: 135px
+
+    @media #{$desktop}
+      font-size: 14px
+
+.form
+  float: left
+  margin-left: $marginLeft-mobile
+  width: calc(85% - 150px) //makes input grow with screen width
+
+  @media #{$iPad}
+    width: calc(100% - 250px)
+
+
+  @media #{$desktop}
+    width: calc(85% - 100px)
+
+  &__input
+    display: block
+    width: 100%
+    outline: 0
+    border: 0
+    border-bottom: 1px solid #000000
+    margin-bottom: 52px
+    background: transparent
+    font-family: 'OpenSansRegular'
+    padding-bottom: 5px
+    font-size: 15px
+
+    @media #{$iPad}
+      margin-bottom: 75px
+      font-size: 20px
+
+    @media #{$desktop}
+      font-size: 14px
+
+    &::placeholder
+      @extend %block__text
+
+      @media #{$iPad}
+        font-size: 21px
+        line-height: 36px
+
+      @media #{$desktop}
+        font-size: 14px
+    &--message
+
+  &__button
+    font-size: 20px
+    font-weight: bold
+    color: black
+    text-transform: uppercase
+    border: 0
+    background-color: transparent
+
+    @media #{$iPad}
+      font-size: 21px
+      line-height: 36px
+
+    &:hover
+      cursor: pointer
+
+
+.socialmedias
+  float: right
+  border-left: 1px solid black
+  padding-left: 25px
+  margin-right: 10%
+  margin-top: 5px
+
+  @media #{$iPad}
+    margin-right: 80px
+    margin-top: 20px
+
+  @media #{$desktop}
+    margin-right: 0
+    margin-top: 15px
+
+
+  &__item
+
+    &:nth-child(1), &:nth-child(2)
+      margin-bottom: 68px
+    & a
+      width: 19px
+      height: 19px
+
+    &--facebook a
+      display: block
+      background-image: url('/assets/images/socialmedias__item--facebook.png')
+      background-repeat: no-repeat
+
+    &--instagram a
+      background-image: url('/assets/images/socialmedias__item--instagram.png')
+      background-repeat: no-repeat
+      display: block
+
+    &--twitter a
+      background-image: url('/assets/images/socialmedias__item--twitter.png')
+      background-repeat: no-repeat
+      display: block
